@@ -2,9 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lesson 6 Home Work</title>
 </head>
 <body>
-<script src="l6work.js" ></script>
+<div class="target"></div>
+<div class="box_comments"></div>
+<script >
+    fetch('https://jsonplaceholder.typicode.com/posts')
+        .then(value => value.json())
+        .then(posts => {
+            let postElement = document.getElementsByClassName('target')[0];
+            for (const post of posts) {
+                let pPost = document.createElement('h3');
+                pPost.innerText = `${post.id}. ${post.title} - (${post.userId})`;
+                postElement.append(pPost);
+                let bodyInfo = document.createElement('p');
+                bodyInfo.innerText = `${post.body}`;
+                postElement.append(bodyInfo);
+
+            }
+        });
+    fetch('https://jsonplaceholder.typicode.com/comments')
+        .then(value => value.json())
+        .then(comments => {
+            let boxComments = document.getElementsByClassName('box_comments')[0];
+            for (const comment of comments) {
+                let pComment = document.createElement('h3');
+                pComment.innerText = `${comment.id}. ${comment.name} - (${comment.postId})`;
+                boxComments.append(pComment);
+                let bodyComments = document.createElement('p');
+                bodyComments.innerText = `${comment.body}`;
+                boxComments.append(bodyComments);
+            }
+        });
+</script>
+<!--<script src="l6work.js" ></script>-->
 </body>
 </html>
