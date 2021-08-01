@@ -58,10 +58,12 @@ let users = [{
 }];
 
 
-
+let blockDiv = document.createElement('div');
+blockDiv.style.display = 'flex';
+blockDiv.style.flexWrap = 'wrap';
 for (const object of users) {
-    let userDiv = document.createElement('div');
 
+    let userDiv = document.createElement('div');
     let title = document.createElement('h2');
     title.innerText = `${object.name}`;
     userDiv.append(title);
@@ -70,14 +72,14 @@ for (const object of users) {
     info.innerText = `${object.age} - ${object.status}`;
     userDiv.append(info);
 
-    let adress = document.createElement('h4');
-    adress.innerText = 'Adress:';
-    userDiv.append(adress);
         let city = document.createElement('p');
-    city.innerText = `${object.address.stream}`;
+    city.innerText =`${object.address.country}, ${object.address.city},  ${object.address.street}, ${object.address.houseNumber}`;
     userDiv.append(city);
-document.body.appendChild(userDiv);
+    userDiv.style.width = '25%';
+    blockDiv.append(userDiv);
+
 }
+document.body.appendChild(blockDiv);
 
 <!--3 Є масив котрий характеризує правила.-->
 <!--Створити скрипт який ітерує цей масив, та робить кожне правило в окремому блоці.-->
